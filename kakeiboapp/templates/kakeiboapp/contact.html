@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}お問い合わせ{% endblock %}
+{% block header%}
+<div id="logo">
+	<h1><a href="{% url 'kakeiboapp:index'%}"><img src="{% static 'images/logo.png' %}" alt="SAMPLE COMPANY"></a></h1>
+</div>
+{% endblock %}
+{% block body %}<body>{% endblock %}
+{% block contents%}
+<section>
+<h2>お問い合わせ</h2>
+
+	<!-- フォームの送信が成功したときのメッセージを表示するためのコード -->
+	<!-- requestにmessagesオブジェクトが存在している場合 -->
+	{% if messages %}
+	<!-- 箇条書きのスタイルを無効にした<ul>タグでメッセージを出力 -->
+	<ul class="list-unstyled" style="list-style: none;">
+	<!-- forでmessagesを取り出す -->
+	{% for message in messages %}
+	<!-- message.tagsが存在する場合はclass属性にCSSのクラスを設定 -->
+	<li {%if message.tags %} class="{{ message.tags }}" {% endif %}>
+		<!-- messageに格納されているメッセージを出力 -->
+		{{ message }}
+	</li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+<form method="post">
+{% csrf_token %}
+<table class="ta1">
+<tr>
+<th>お名前※</th>
+<td>{{form.name}}</td>
+</tr>
+<tr>
+<th>メールアドレス※</th>
+<td>{{form.email}}</td>
+</tr>
+<tr>
+<th>件名※</th>
+<td>{{form.title}}</td>
+</tr>
+<tr>
+<th>お問い合わせ詳細※</th>
+<td>{{form.message}}</td>
+</tr>
+</table>
+
+<p class="btn">
+<input type="submit" value="送信">
+</p>
+</form>
+
+</section>
+{% endblock %}

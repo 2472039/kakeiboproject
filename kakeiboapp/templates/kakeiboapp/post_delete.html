@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}削除{% endblock %}
+{% block header %}
+<div id="logo">
+	<h1><a href="{% url 'kakeiboapp:index'%}"><img src="{% static 'images/logo.png' %}" alt="SAMPLE COMPANY"></a></h1>
+</div>
+{% endblock %}
+{% block body %}<body>{% endblock %}
+{% block contents %}
+<section>
+    <h2>削除</h2>
+    <form method="post">
+        <p>削除してもいいですか？</p>
+        {% csrf_token %}
+        <p class="btn"><input type="submit" value="削除"></p>
+        <p class="btn"><a href="{% url 'kakeiboapp:detail' object.pk %}" >戻る</a></p>
+    </form>
+</section>
+{% endblock %}

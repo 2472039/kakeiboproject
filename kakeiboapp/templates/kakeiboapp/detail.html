@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}詳細{% endblock %}
+{% block header %}
+<div id="logo">
+	<h1><a href="{% url 'kakeiboapp:index'%}"><img src="{% static 'images/logo.png' %}" alt="SAMPLE COMPANY"></a></h1>
+</div>
+{% endblock %}
+{% block body %}<body>{% endblock %}
+{% block contents %}
+<section>
+    <h2>{{object.date}}詳細</h2>
+    <table class="ta1">
+        <tr>
+            <th>タイトル</th>
+            <td>{{object.title}}</td>
+        </tr>
+        <tr>
+            <th>金額</th>
+            <td>{{object.amount}}</td>
+        </tr>
+        <tr>
+            <th>コメント</th>
+            <td>{{object.comment}}</td>
+        </tr>
+        <tr>
+            <th>カテゴリー</th>
+            <td>{{object.category}}</td>
+        </tr>
+    </table>
+    <p class="btn"><a href="{% url 'kakeiboapp:delete' object.pk %}" >削除する</a></p>
+    <p class="btn"><a href="{% url 'kakeiboapp:kakeibo_list' %}">一覧に戻る</a></p>
+</section>
+{% endblock %}

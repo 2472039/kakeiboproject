@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}追加完了{% endblock %}
+{% block body %}<body>{% endblock %}
+{% block header %}
+<div id="logo">
+	<h1><a href="{% url 'kakeiboapp:index'%}"><img src="{% static 'images/logo.png' %}" alt="SAMPLE COMPANY"></a></h1>
+</div>
+{% endblock header %}
+{% block contents %}
+    <section>
+        <h2>追加完了</h2>
+        <p><a href="{% url 'kakeiboapp:index' %}">トップページへ</a></p>
+    </section>
+{% endblock %}

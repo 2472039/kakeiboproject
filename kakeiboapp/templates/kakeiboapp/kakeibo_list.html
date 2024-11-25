@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}リスト一覧{% endblock %}
+{% block header %}
+<div id="logo">
+	<h1><a href="{% url 'kakeiboapp:index'%}"><img src="{% static 'images/logo.png' %}" alt="SAMPLE COMPANY"></a></h1>
+</div>
+{% endblock %}
+{% block body %}<body>{% endblock %}
+{% block contents %}
+<section>
+    <h2>一覧</h2>
+    <table class="ta1">
+    {% for record in records%}
+        <tr>
+            <th>{{record.date}}</th>
+            <td>{{record.title}}</td>
+            <td>{{record.amount}}</td>
+            <td><button type="button" onclick="location.href='{% url 'kakeiboapp:category' record.category %}'">{{ record.category }}</button></td>
+            <td><button type="button" onclick="location.href='{% url 'kakeiboapp:detail' record.pk %}'">詳細</button></td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% include "kakeiboapp/pagination.html" %}
+</section>
+{% endblock %}

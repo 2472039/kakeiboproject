@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}ログイン{% endblock %}
+{% block header %}
+<div id="logo">
+	<h1><a href="{% url 'kakeiboapp:index'%}"><img src="{% static 'images/logo.png' %}" alt="SAMPLE COMPANY"></a></h1>
+</div>
+{% endblock header %}
+{% block body %}<body>{% endblock body %}
+{% block contents %}
+  <div class="container">
+    <section>
+      {% if form.errors %}
+        <p style="color: red">ユーザー名とパスワードが一致しません。</p>
+      {% endif %}
+      <h2>ログイン</h2>
+      <form method="post">
+        {% csrf_token %}
+        <table class="ta1">
+        {% for field in form %}
+          <tr>
+            <th>{{field.label_tag}}</th>
+            <td>{{field}}</td>
+          </tr>
+        {% endfor %}
+        </table>
+        <p class="btn"><input type="submit" value="ログイン"></p>
+      </form>
+    </section>
+  </div>
+{% endblock %}

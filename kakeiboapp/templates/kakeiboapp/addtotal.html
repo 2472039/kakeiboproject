@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}追加{% endblock %}
+{% block body %}<body>{% endblock %}
+{% block header %}
+<div id="logo">
+	<h1><a href="{% url 'kakeiboapp:index'%}"><img src="{% static 'images/logo.png' %}" alt="SAMPLE COMPANY"></a></h1>
+</div>
+{% endblock header %}
+{% block contents %}
+<section>
+    <form method="post">
+        {% csrf_token %}
+        <table class="ta1">
+            <tr>
+                <th>銀行残高</th>
+                <td>{{form.bank}}</td>
+            </tr>
+            <tr>
+                <th>収入</th>
+                <td>{{form.income}}</td>
+            </tr>
+            <tr>
+                <th>支出</th>
+                <td>{{form.outcome}}</td>
+            </tr>
+        </table>
+        <br><p class="btn"><input type="submit" value="追加"></p>
+    </form>
+</section>
+{% endblock contents %}

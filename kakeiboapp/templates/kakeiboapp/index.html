@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}家計簿アプリ HOME{% endblock %}
+{% block body %}<body class="home">{% endblock %}
+{% block header %}
+	<div id="logo">
+	<h1><a href="{% url 'kakeiboapp:index' %}">家計簿アプリ</a></h1>
+	{% if user.is_authenticated %}
+	{% for item in latest %}
+	<p>銀行: {{item.bank}}</p>
+	<p>収入: {{item.income}}</p>
+	<p>支出: {{item.outcome}}</p>
+	{% endfor %}
+	{% else %}
+	<p><a href="{% url 'accounts:login' %}">ログイン</a></p>
+	{% endif %}
+	</div>
+	<div id="mainimg">
+		<video src="{% static 'images/mainimg.mp4' %}" autoplay loop muted playsinline>
+	</div>
+{% endblock %}
+
+{% block contents %}
+	<div class="c2">
+
+	<div class="main">
+
+	<section>
+
+	<h2>NEWS</h2>
+
+	<dl id="new">
+	<dt>2022/10/13<span>その他</span></dt>
+	<dd>tp_biz60配布開始。</dd>
+	<dt>20XX/00/00<span class="icon-bg1">サービス</span></dt>
+	<dd>サンプルテキスト。サンプルテキスト。サンプルテキスト。</dd>
+	<dt>20XX/00/00<span class="icon-bg1">サービス</span></dt>
+	<dd>サンプルテキスト。サンプルテキスト。サンプルテキスト。</dd>
+	<dt>20XX/00/00</dt>
+	<dd>サンプルテキスト。サンプルテキスト。サンプルテキスト。</dd>
+	<dt>20XX/00/00<span>その他</span></dt>
+	<dd>サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</dd>
+	</dl>
+
+	<a href="https://q19cms.com/files_m/file/cms_oshirase.html" target="_blank"><img src="https://template-party.com/file/images/cms_oshirase/banner_oshirase_cms2.jpg" alt="無料で使えるお知らせCMSのご案内"></a>
+
+	</section>
+
+	</div>
+
+	</div>
+	<!--/.c2-->
+
+{% endblock %}
